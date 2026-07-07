@@ -12,7 +12,15 @@
 					"name": "source"
 				}
 			],
-			"sinks": [],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "AzureSqlTable2",
+						"type": "DatasetReference"
+					},
+					"name": "sink"
+				}
+			],
 			"transformations": [
 				{
 					"name": "derivedColumn"
@@ -39,7 +47,29 @@
 				"          department",
 				"     ),",
 				"     skipDuplicateMapInputs: true,",
-				"     skipDuplicateMapOutputs: true) ~> select"
+				"     skipDuplicateMapOutputs: true) ~> select",
+				"select sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     input(",
+				"          Id as integer,",
+				"          Name as string,",
+				"          Salary as decimal(10,2),",
+				"          Department as string",
+				"     ),",
+				"     deletable:false,",
+				"     insertable:true,",
+				"     updateable:false,",
+				"     upsertable:false,",
+				"     format: 'table',",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true,",
+				"     errorHandlingOption: 'stopOnFirstError',",
+				"     mapColumn(",
+				"          Id = id,",
+				"          Name = name,",
+				"          Salary = salary,",
+				"          Department = department",
+				"     )) ~> sink"
 			]
 		}
 	}
