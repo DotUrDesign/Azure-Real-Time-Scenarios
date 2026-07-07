@@ -1,0 +1,47 @@
+{
+	"name": "AzureSqlTable3",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ADFToSQLdb",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "ItemId",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "VarId",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "ItemName",
+				"type": "varchar"
+			},
+			{
+				"name": "VarName",
+				"type": "varchar"
+			},
+			{
+				"name": "WhNo",
+				"type": "varchar"
+			},
+			{
+				"name": "Zone",
+				"type": "varchar"
+			},
+			{
+				"name": "Bin",
+				"type": "varchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "Inventory"
+		}
+	}
+}

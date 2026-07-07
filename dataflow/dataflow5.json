@@ -1,0 +1,72 @@
+{
+	"name": "dataflow5",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "DelimitedText15",
+						"type": "DatasetReference"
+					},
+					"name": "source"
+				}
+			],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "AzureSqlTable3",
+						"type": "DatasetReference"
+					},
+					"name": "sink"
+				}
+			],
+			"transformations": [
+				{
+					"name": "aggregate"
+				}
+			],
+			"scriptLines": [
+				"source(output(",
+				"          ItemId as string,",
+				"          VarId as string,",
+				"          ItemName as string,",
+				"          VarName as string,",
+				"          WhNo as string,",
+				"          Zone as string,",
+				"          Bin as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false) ~> source",
+				"source aggregate(groupBy(ItemId,",
+				"          ItemName),",
+				"     VarName = collect(VarName)) ~> aggregate",
+				"aggregate sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     input(",
+				"          ItemId as integer,",
+				"          VarId as integer,",
+				"          ItemName as string,",
+				"          VarName as string,",
+				"          WhNo as string,",
+				"          Zone as string,",
+				"          Bin as string",
+				"     ),",
+				"     deletable:false,",
+				"     insertable:true,",
+				"     updateable:false,",
+				"     upsertable:false,",
+				"     format: 'table',",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true,",
+				"     errorHandlingOption: 'stopOnFirstError',",
+				"     mapColumn(",
+				"          ItemId,",
+				"          ItemName,",
+				"          VarName",
+				"     )) ~> sink"
+			]
+		}
+	}
+}
