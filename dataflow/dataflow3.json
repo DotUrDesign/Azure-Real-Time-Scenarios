@@ -1,0 +1,69 @@
+{
+	"name": "dataflow3",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "Json2",
+						"type": "DatasetReference"
+					},
+					"name": "source1"
+				}
+			],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "DelimitedText12",
+						"type": "DatasetReference"
+					},
+					"name": "sink"
+				}
+			],
+			"transformations": [
+				{
+					"name": "flatten"
+				}
+			],
+			"scriptLines": [
+				"source(output(",
+				"          department as string,",
+				"          employeeDetails as (city as string, joiningDate as date, salary as integer)[],",
+				"          id as short,",
+				"          name as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false,",
+				"     documentForm: 'arrayOfDocuments') ~> source1",
+				"source1 foldDown(unroll(employeeDetails, employeeDetails),",
+				"     mapColumn(",
+				"          department,",
+				"          city = employeeDetails.city,",
+				"          id,",
+				"          name,",
+				"          joiningDate = employeeDetails.joiningDate,",
+				"          salary = employeeDetails.salary",
+				"     ),",
+				"     skipDuplicateMapInputs: false,",
+				"     skipDuplicateMapOutputs: false) ~> flatten",
+				"flatten sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     umask: 0022,",
+				"     preCommands: [],",
+				"     postCommands: [],",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true,",
+				"     mapColumn(",
+				"          department,",
+				"          city,",
+				"          id,",
+				"          name,",
+				"          joiningDate,",
+				"          salary",
+				"     )) ~> sink"
+			]
+		}
+	}
+}
