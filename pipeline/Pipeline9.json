@@ -232,7 +232,7 @@
 							"userProperties": [],
 							"typeProperties": {
 								"expression": {
-									"value": "@equals(activity('Get Metadata2').output.itemName, variables('FinalFileName'))",
+									"value": "@equals(activity('Get Metadata2_copy1').output.itemName, variables('FinalFileName'))",
 									"type": "Expression"
 								},
 								"ifTrueActivities": [
