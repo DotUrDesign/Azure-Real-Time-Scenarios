@@ -1,6 +1,7 @@
 {
 	"name": "Pipeline9",
 	"properties": {
+		"description": "Get latest file from folder",
 		"activities": [
 			{
 				"name": "Get Metadata1",
