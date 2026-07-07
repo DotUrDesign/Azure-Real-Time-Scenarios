@@ -1,6 +1,47 @@
 {
 	"name": "Pipeline4",
 	"properties": {
+		"parameters": {
+			"teamwebhookurl": {
+				"type": "string",
+				"defaultValue": "https://smartrecontechnologies632.webhook.office.com/webhookb2/6baf87e5-26f2-4f48-be80-982c11630d8e@1186e3d5-e444-4b2a-bd2e-139e659f1063/IncomingWebhook/0b6172b408004a2fa7971fb435599070/5e9e2ce2-7d38-4eef-9f05-b38a7294d7bd/V2wRzu0PrVQ5Zo8m94V9ATzJhTstPgXt8ehWfll0eoc4g1"
+			},
+			"name": {
+				"type": "string",
+				"defaultValue": "Test"
+			},
+			"triggerTime": {
+				"type": "string"
+			},
+			"status": {
+				"type": "string",
+				"defaultValue": "Testing"
+			},
+			"message": {
+				"type": "string",
+				"defaultValue": "This pipeline is executed with success."
+			},
+			"subscription": {
+				"type": "string",
+				"defaultValue": "a86a998c-431d-4cb2-8599-5ec5e0c4f81c"
+			},
+			"resourceGroup": {
+				"type": "string",
+				"defaultValue": "ADFTraining"
+			},
+			"runId": {
+				"type": "string"
+			},
+			"executionEndTime": {
+				"type": "string"
+			},
+			"runDuration": {
+				"type": "string"
+			},
+			"MessageCard": {
+				"type": "string"
+			}
+		},
 		"annotations": []
 	}
 }
