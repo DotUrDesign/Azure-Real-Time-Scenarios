@@ -1,6 +1,7 @@
 {
 	"name": "Pipeline4",
 	"properties": {
+		"description": "Send notification to Microsoft Teams channel from Azure Data Factory",
 		"parameters": {
 			"teamwebhookurl": {
 				"type": "string",
