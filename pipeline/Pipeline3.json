@@ -1,6 +1,7 @@
 {
 	"name": "Pipeline3",
 	"properties": {
+		"description": "Archive files",
 		"activities": [
 			{
 				"name": "ADLS to SQL DB",
