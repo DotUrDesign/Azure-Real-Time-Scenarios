@@ -130,8 +130,6 @@
 			{
 				"name": "Get Metadata1_copy1",
 				"type": "GetMetadata",
-				"state": "Inactive",
-				"onInactiveMarkAs": "Succeeded",
 				"dependsOn": [
 					{
 						"activity": "ForEach1",
@@ -168,8 +166,6 @@
 			{
 				"name": "ForEach1_copy1",
 				"type": "ForEach",
-				"state": "Inactive",
-				"onInactiveMarkAs": "Succeeded",
 				"dependsOn": [
 					{
 						"activity": "Get Metadata1_copy1",
