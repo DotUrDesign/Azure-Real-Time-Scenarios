@@ -1,6 +1,7 @@
 {
 	"name": "Pipeline1",
 	"properties": {
+		"description": "Delete file more than 30 days.",
 		"activities": [
 			{
 				"name": "Get Metadata 1",
@@ -24,6 +25,7 @@
 					],
 					"storeSettings": {
 						"type": "AzureBlobFSReadSettings",
+						"recursive": true,
 						"enablePartitionDiscovery": false
 					},
 					"formatSettings": {
@@ -79,6 +81,7 @@
 								],
 								"storeSettings": {
 									"type": "AzureBlobFSReadSettings",
+									"recursive": true,
 									"enablePartitionDiscovery": false
 								},
 								"formatSettings": {
