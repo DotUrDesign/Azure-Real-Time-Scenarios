@@ -1,0 +1,46 @@
+{
+	"name": "Json1",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ADFToADLS",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Json",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": "customer_json.json",
+				"fileSystem": "source"
+			}
+		},
+		"schema": {
+			"type": "object",
+			"properties": {
+				"id": {
+					"type": "integer"
+				},
+				"name": {
+					"type": "string"
+				},
+				"department": {
+					"type": "string"
+				},
+				"employeeDetails": {
+					"type": "object",
+					"properties": {
+						"salary": {
+							"type": "integer"
+						},
+						"city": {
+							"type": "string"
+						},
+						"joiningDate": {
+							"type": "string"
+						}
+					}
+				}
+			}
+		}
+	}
+}
