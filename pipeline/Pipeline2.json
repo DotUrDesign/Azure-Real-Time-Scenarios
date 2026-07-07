@@ -1,6 +1,7 @@
 {
 	"name": "Pipeline2",
 	"properties": {
+		"description": "Delete files more than 200B",
 		"activities": [
 			{
 				"name": "Get Metadata1",
@@ -24,6 +25,7 @@
 					],
 					"storeSettings": {
 						"type": "AzureBlobFSReadSettings",
+						"recursive": true,
 						"enablePartitionDiscovery": false
 					},
 					"formatSettings": {
@@ -79,6 +81,7 @@
 								],
 								"storeSettings": {
 									"type": "AzureBlobFSReadSettings",
+									"recursive": true,
 									"enablePartitionDiscovery": false
 								},
 								"formatSettings": {
