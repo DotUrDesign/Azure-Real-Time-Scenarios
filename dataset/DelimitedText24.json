@@ -19,7 +19,7 @@
 					"value": "@dataset().fileName",
 					"type": "Expression"
 				},
-				"fileSystem": "foldername1kb"
+				"fileSystem": "foldername2kb"
 			},
 			"columnDelimiter": ",",
 			"escapeChar": "\\",
