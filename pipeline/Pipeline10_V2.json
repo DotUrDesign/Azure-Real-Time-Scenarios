@@ -101,7 +101,7 @@
 							"userProperties": [],
 							"typeProperties": {
 								"on": {
-									"value": "@if(\n    less(activity('Get Metadata2').output.size, 1000), \n    'less than 1Kb',\n    if(less(activity('Get Metadata2').output.size, 2000), \n    'more than 1 Kb & less than 2 Kb', \n    'Default')\n    )",
+									"value": "@if(\n    less(activity('Get Metadata2').output.size, 1000), \n    'less than 1Kb',\n    if(less(activity('Get Metadata2').output.size, 2000), \n    'more than 1 Kb & less than 2 Kb', \n    'Default')\n)",
 									"type": "Expression"
 								},
 								"cases": [
