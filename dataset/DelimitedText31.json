@@ -1,0 +1,48 @@
+{
+	"name": "DelimitedText31",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ADFToADLS",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": "employees_csv2.csv",
+				"fileSystem": "source"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "department",
+				"type": "String"
+			},
+			{
+				"name": "city",
+				"type": "String"
+			},
+			{
+				"name": "id",
+				"type": "String"
+			},
+			{
+				"name": "name",
+				"type": "String"
+			},
+			{
+				"name": "joiningDate",
+				"type": "String"
+			},
+			{
+				"name": "salary",
+				"type": "String"
+			}
+		]
+	}
+}
