@@ -86,11 +86,207 @@
 									"type": "DelimitedTextReadSettings"
 								}
 							}
+						},
+						{
+							"name": "If Condition1",
+							"type": "IfCondition",
+							"dependsOn": [
+								{
+									"activity": "Get Metadata2",
+									"dependencyConditions": [
+										"Succeeded"
+									]
+								}
+							],
+							"userProperties": [],
+							"typeProperties": {
+								"expression": {
+									"value": "@greater(activity('Get Metadata2').output.lastModified, variables('max_timestamp'))",
+									"type": "Expression"
+								},
+								"ifTrueActivities": [
+									{
+										"name": "Set variable1",
+										"type": "SetVariable",
+										"dependsOn": [],
+										"policy": {
+											"secureOutput": false,
+											"secureInput": false
+										},
+										"userProperties": [],
+										"typeProperties": {
+											"variableName": "max_timestamp",
+											"value": {
+												"value": "@activity('Get Metadata2').output.lastModified",
+												"type": "Expression"
+											}
+										}
+									}
+								]
+							}
+						}
+					]
+				}
+			},
+			{
+				"name": "ForEach2",
+				"type": "ForEach",
+				"dependsOn": [
+					{
+						"activity": "ForEach1",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"items": {
+						"value": "@activity('Get Metadata1').output.childItems",
+						"type": "Expression"
+					},
+					"isSequential": true,
+					"activities": [
+						{
+							"name": "Get Metadata3",
+							"type": "GetMetadata",
+							"dependsOn": [],
+							"policy": {
+								"timeout": "0.12:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"dataset": {
+									"referenceName": "DelimitedText44",
+									"type": "DatasetReference",
+									"parameters": {
+										"fileName": {
+											"value": "@item().name",
+											"type": "Expression"
+										}
+									}
+								},
+								"fieldList": [
+									"itemName",
+									"lastModified"
+								],
+								"storeSettings": {
+									"type": "AzureBlobFSReadSettings",
+									"enablePartitionDiscovery": false
+								},
+								"formatSettings": {
+									"type": "DelimitedTextReadSettings"
+								}
+							}
+						},
+						{
+							"name": "If Condition2",
+							"type": "IfCondition",
+							"dependsOn": [
+								{
+									"activity": "Get Metadata3",
+									"dependencyConditions": [
+										"Succeeded"
+									]
+								}
+							],
+							"userProperties": [],
+							"typeProperties": {
+								"expression": {
+									"value": "@equals(activity('Get Metadata3').output.lastModified, variables('max_timestamp'))",
+									"type": "Expression"
+								},
+								"ifTrueActivities": [
+									{
+										"name": "Copy data1",
+										"type": "Copy",
+										"dependsOn": [],
+										"policy": {
+											"timeout": "0.12:00:00",
+											"retry": 0,
+											"retryIntervalInSeconds": 30,
+											"secureOutput": false,
+											"secureInput": false
+										},
+										"userProperties": [],
+										"typeProperties": {
+											"source": {
+												"type": "DelimitedTextSource",
+												"storeSettings": {
+													"type": "AzureBlobFSReadSettings",
+													"recursive": true,
+													"enablePartitionDiscovery": false
+												},
+												"formatSettings": {
+													"type": "DelimitedTextReadSettings"
+												}
+											},
+											"sink": {
+												"type": "DelimitedTextSink",
+												"storeSettings": {
+													"type": "AzureBlobFSWriteSettings"
+												},
+												"formatSettings": {
+													"type": "DelimitedTextWriteSettings",
+													"quoteAllText": true,
+													"fileExtension": ".txt"
+												}
+											},
+											"enableStaging": false,
+											"translator": {
+												"type": "TabularTranslator",
+												"typeConversion": true,
+												"typeConversionSettings": {
+													"allowDataTruncation": true,
+													"treatBooleanAsNumber": false
+												}
+											}
+										},
+										"inputs": [
+											{
+												"referenceName": "DelimitedText45",
+												"type": "DatasetReference",
+												"parameters": {
+													"fileName": {
+														"value": "@activity('Get Metadata3').output.itemName",
+														"type": "Expression"
+													}
+												}
+											}
+										],
+										"outputs": [
+											{
+												"referenceName": "DelimitedText46",
+												"type": "DatasetReference",
+												"parameters": {
+													"fileName": {
+														"value": "@activity('Get Metadata3').output.itemName",
+														"type": "Expression"
+													}
+												}
+											}
+										]
+									}
+								]
+							}
 						}
 					]
 				}
 			}
 		],
+		"variables": {
+			"result_fileName": {
+				"type": "String"
+			},
+			"max_timestamp": {
+				"type": "String",
+				"defaultValue": "1300-01-01"
+			}
+		},
 		"annotations": []
 	}
 }
