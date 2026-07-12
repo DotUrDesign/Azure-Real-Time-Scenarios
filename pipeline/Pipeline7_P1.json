@@ -1,0 +1,38 @@
+{
+	"name": "Pipeline7_P1",
+	"properties": {
+		"description": "Load CSV file to JSON with Nested Hierarchy in adf",
+		"activities": [
+			{
+				"name": "Data flow1",
+				"type": "ExecuteDataFlow",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"dataflow": {
+						"referenceName": "dataflow8",
+						"type": "DataFlowReference",
+						"datasetParameters": {
+							"sink1": {
+								"fileName": "employee_csv2"
+							}
+						}
+					},
+					"compute": {
+						"coreCount": 8,
+						"computeType": "General"
+					},
+					"traceLevel": "Fine"
+				}
+			}
+		],
+		"annotations": []
+	}
+}
