@@ -18,7 +18,12 @@
 				"typeProperties": {
 					"dataflow": {
 						"referenceName": "dataflow9",
-						"type": "DataFlowReference"
+						"type": "DataFlowReference",
+						"datasetParameters": {
+							"sink1": {
+								"fileName": "inventory"
+							}
+						}
 					},
 					"compute": {
 						"coreCount": 8,
