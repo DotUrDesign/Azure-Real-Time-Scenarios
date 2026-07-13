@@ -21,7 +21,8 @@
 				"type": "AzureBlobFSLocation",
 				"fileName": "SourceData.xlsx",
 				"fileSystem": "source2"
-			}
+			},
+			"firstRowAsHeader": true
 		},
 		"schema": [
 			{
