@@ -1,0 +1,26 @@
+{
+	"name": "Excel4",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ADFToADLS",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Excel",
+		"typeProperties": {
+			"sheetName": "Config",
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": "ConfigFileXlsx.xlsx",
+				"fileSystem": "source2"
+			},
+			"firstRowAsHeader": true
+		},
+		"schema": [
+			{
+				"name": "SheetName",
+				"type": "String"
+			}
+		]
+	}
+}
