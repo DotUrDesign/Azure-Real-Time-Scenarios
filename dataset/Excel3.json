@@ -21,7 +21,8 @@
 				"type": "AzureBlobFSLocation",
 				"fileName": "Employees_India_USA_UK.xlsx",
 				"fileSystem": "source2"
-			}
+			},
+			"firstRowAsHeader": true
 		},
 		"schema": [
 			{

@@ -64,7 +64,16 @@
 								"secureOutput": false,
 								"secureInput": false
 							},
-							"userProperties": [],
+							"userProperties": [
+								{
+									"name": "Source",
+									"value": "source2//Employees_India_USA_UK.xlsx"
+								},
+								{
+									"name": "Destination",
+									"value": "dbo.Employees"
+								}
+							],
 							"typeProperties": {
 								"source": {
 									"type": "ExcelSource",
