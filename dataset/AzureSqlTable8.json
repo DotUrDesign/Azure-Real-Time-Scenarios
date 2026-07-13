@@ -57,6 +57,10 @@
 				"name": "Website",
 				"type": "varchar"
 			}
-		]
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "Employees999"
+		}
 	}
 }
