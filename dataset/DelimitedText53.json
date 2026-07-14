@@ -1,0 +1,36 @@
+{
+	"name": "DelimitedText53",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ADFToADLS",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": "parsed_output1",
+				"fileSystem": "output"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "ItemId",
+				"type": "String"
+			},
+			{
+				"name": "ItemName",
+				"type": "String"
+			},
+			{
+				"name": "VartName",
+				"type": "String"
+			}
+		]
+	}
+}

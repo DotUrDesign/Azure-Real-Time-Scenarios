@@ -1,0 +1,54 @@
+{
+	"name": "Json5",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ADFToADLS",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Json",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": "json_input1.json",
+				"fileSystem": "json-input"
+			}
+		},
+		"schema": {
+			"type": "object",
+			"properties": {
+				"id": {
+					"type": "integer"
+				},
+				"name": {
+					"type": "string"
+				},
+				"address": {
+					"type": "object",
+					"properties": {
+						"state": {
+							"type": "string"
+						},
+						"city": {
+							"type": "string"
+						},
+						"country": {
+							"type": "string"
+						}
+					}
+				},
+				"contact": {
+					"type": "object",
+					"properties": {
+						"phone_number": {
+							"type": "string"
+						},
+						"email_id": {
+							"type": "string"
+						}
+					}
+				}
+			}
+		}
+	}
+}
