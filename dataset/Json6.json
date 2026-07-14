@@ -1,0 +1,49 @@
+{
+	"name": "Json6",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ADFToADLS",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Json",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": "json_input2.json",
+				"fileSystem": "json-input"
+			}
+		},
+		"schema": {
+			"type": "object",
+			"properties": {
+				"SO Id": {
+					"type": "string"
+				},
+				"SODate": {
+					"type": "string"
+				},
+				"Country": {
+					"type": "string"
+				},
+				"Sales": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"properties": {
+							"Item": {
+								"type": "string"
+							},
+							"Qty": {
+								"type": "string"
+							},
+							"Value": {
+								"type": "string"
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
