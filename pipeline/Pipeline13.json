@@ -1,6 +1,7 @@
 {
 	"name": "Pipeline13",
 	"properties": {
+		"description": "I have to copy 30 files from blob to Azure SQL and there is no table created. So how can we create table for each file on runtime and load data into it ?",
 		"activities": [
 			{
 				"name": "Get Metadata1",
@@ -24,6 +25,7 @@
 					],
 					"storeSettings": {
 						"type": "AzureBlobFSReadSettings",
+						"recursive": true,
 						"enablePartitionDiscovery": false
 					}
 				}
